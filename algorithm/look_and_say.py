@@ -3,20 +3,22 @@ def look_and_say_sequence(n):
         return "1"
     
     else:
-        before = list(look_and_say_sequence(n-1))
+        before = look_and_say_sequence(n-1)
         answer = ""
-        queue = []
-        while before != []:
-            num = before.pop(0)
-            if queue == []:
-                queue.append(num)
-            elif queue[-1] == num:
-                queue.append(num)
+        current_number = 0
+        count = 0
+        for i in range(len(before)):
+            if i == 0:
+                current_number = before[i]
+                count = 1
             else:
-                answer += str(len(queue)) + queue[0]
-                queue = [num]
-        
-        answer += str(len(queue)) + queue[0]
+                if before[i] == current_number:
+                    count += 1
+                else:
+                    answer += f"{count}{current_number}"
+                    current_number = before[i]
+                    count = 1
+        answer += f"{count}{current_number}"
     
         return answer
     

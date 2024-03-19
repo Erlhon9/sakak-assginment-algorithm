@@ -9,7 +9,7 @@ def test_accuracy(n, result):
   
 @pytest.mark.timeout(5)
 @pytest.mark.parametrize("n, result", [
-    (50, "**")
+    (100, "**")
 ])
 def test_efficiency(n, result):
     assert solution(n) == result
